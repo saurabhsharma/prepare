@@ -228,3 +228,16 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+//CakePlugin::load('Admin');
+
+// CakePlugin::loadAll(array(
+//     array('bootstrap' => true),
+//     'Admin' => array('routes' => true)
+// ));
+
+CakePlugin::loadAll(array(
+    'Admin' => array('routes' => true)
+));
+
+
