@@ -1,4 +1,4 @@
-<?php echo $this->Form->create('null', array('url' => array('action' => 'login'), 'class' => 'styled')); ?>
+<?php echo $this->Form->create('User', array('url' => Configure::read('Site.url') . "admin/login/", 'class' => 'styled')); ?>
 
  
 <label for="username">

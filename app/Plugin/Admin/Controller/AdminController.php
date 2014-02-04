@@ -21,7 +21,8 @@ class AdminController extends AdminAppController {
         else
         {
             //$this->redirect(array('vivek'=>true,'controller' => 'users', 'action' => 'login','saurabh'));
-            $this->redirect(array('action' => 'login'));
+            //$this->redirect(array('action' => 'login'));
+            $this->redirect('/admin/login/');
         }
 	  
 
@@ -30,11 +31,16 @@ class AdminController extends AdminAppController {
 
 	public function login(){
 
-		echo "<pre>";
-		echo $_POST;
-		echo "</pre>";
+		// echo "<pre>";
+		// echo $_POST;
+		// echo "</pre>";
 		 
-		 
+		if (!empty($this->request->data)){
+
+			pr($this->request->data);
+			exit;
+
+		}
 
 	}
 
