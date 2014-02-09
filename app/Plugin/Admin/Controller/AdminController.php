@@ -30,7 +30,8 @@ class AdminController extends AdminAppController {
 
 
 	public function login(){
-
+		
+		$this->layout = "admin_login";
 		// echo "<pre>";
 		// echo $_POST;
 		// echo "</pre>";
