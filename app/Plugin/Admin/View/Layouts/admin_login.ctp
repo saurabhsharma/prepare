@@ -11,13 +11,14 @@
     <title><?php echo $title_for_layout; ?> - <?php echo Configure::read('Site.title'); ?></title>
 
     <!--Core CSS -->
-    <link href="<?php echo $this->webroot; ?>admin/bs3/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo $this->webroot; ?>admin/css/bootstrap-reset.css" rel="stylesheet">
-    <link href="<?php echo $this->webroot; ?>admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <?php echo $this->Html->css("Admin.bs3.css.bootstrap.min"); ?>
+    <link href="<?php echo $this->webroot; ?>assets/admin/bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo $this->webroot; ?>assets/admin/css/bootstrap-reset.css" rel="stylesheet">
+    <link href="<?php echo $this->webroot; ?>assets/admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
-    <link href="<?php echo $this->webroot; ?>admin/css/style.css" rel="stylesheet">
-    <link href="<?php echo $this->webroot; ?>admin/css/style-responsive.css" rel="stylesheet" />
+    <link href="<?php echo $this->webroot; ?>assets/admin/css/style.css" rel="stylesheet">
+    <link href="<?php echo $this->webroot; ?>assets/admin/css/style-responsive.css" rel="stylesheet" />
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="js/ie8/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -40,8 +41,8 @@
     <!-- Placed js at the end of the document so the pages load faster -->
 
     <!--Core js-->
-    <script src="<?php echo $this->webroot; ?>js/lib/jquery.js"></script>
-    <script src="<?php echo $this->webroot; ?>bs3/js/bootstrap.min.js"></script>
+    <script src="<?php echo $this->webroot; ?>assets/admin/js/lib/jquery.js"></script>
+    <script src="<?php echo $this->webroot; ?>assets/admin/bs3/js/bootstrap.min.js"></script>
 
   </body>
 </html>

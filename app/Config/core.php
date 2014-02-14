@@ -356,3 +356,4 @@ Cache::config('_cake_model_', array(
 ));
 
 Configure::write('Site.url','http://localhost/prepare/');
+
