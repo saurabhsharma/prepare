@@ -4,6 +4,6 @@ class AdminAppController extends AppController {
 
 	public function beforeFilter(){
 
-		$this->layout = false;
+		$this->layout = "admin";
 	}
 }

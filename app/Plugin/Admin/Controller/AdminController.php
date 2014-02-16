@@ -24,7 +24,6 @@ class AdminController extends AdminAppController {
             //$this->redirect(array('action' => 'login'));
             $this->redirect('/admin/login/');
         }
-	  
 
 	}
 
