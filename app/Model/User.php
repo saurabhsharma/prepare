@@ -62,14 +62,5 @@ class User extends AppModel
 
     return $hash;
   }
-
-  public function getUsername($email)
-  {
-    $username = $this->findByEmail($email,'username');
-    if(empty($username)){
-      throw new InternalErrorException(__('Invalid username or password, try again'));
-    }
-    return $username['User']['username'];
-  }
 }
 ?>
