@@ -31,16 +31,61 @@ class AdminController extends AdminAppController {
 	public function login(){
 		
 		$this->layout = "admin_login";
-		// echo "<pre>";
-		// echo $_POST;
-		// echo "</pre>";
 		 
-		if (!empty($this->request->data)){
-
+		  
+	 
+	 	if ($this->request->is('post'))
+	    {
+		
 			pr($this->request->data);
-			exit;
 
-		}
+	      # Log in using email
+	      if( strstr($this->request->data['User']['username'],'@') )
+	      {
+	         
+	        # Retrieve user username for auth
+	        $useraux = $this->User->findByEmail($this->request->data['User']['username'],'username');
+
+	        # Change the username from data form
+	       	$this->request->data['User']['username'] = $useraux['User']['username'];
+	      }
+
+	      // echo "username ". $this->request->data['User']['username'];
+	      // echo "\npassword ". $this->request->data['User']['password'];
+
+	     // debug($this->Auth->login());
+		  debug(AuthComponent::password($this->data[$this->alias]['password']));
+		 
+
+
+	      # Try to log in the user
+	      if ($this->Auth->login())
+	      {
+	      	echo "trying to log in!";
+	        if( !empty($this->request->data['User']['remember_me']) && $this->request->data['User']['remember_me'] == 'S')
+	        {
+	          $cookie = array();
+	          $cookie['username'] = $this->request->data['User']['username'];
+	          $cookie['password'] = $this->Auth->password($this->request->data['User']['password']);
+
+	          # Write cookie ( 30 Days )
+	          $this->Cookie->write('Auth.User', $cookie, true);
+	        }
+
+	        # Redirect to home
+	        $this->redirect($this->Auth->redirect());
+	      }
+	      else
+	      {
+	      	echo "invalid username and password!";	
+	        $this->Session->setFlash(__('Invalid username or password, try again'),'flash_fail');
+	      }
+	    }
+
+
+
+
+
 
 	}
 

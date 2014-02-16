@@ -4,21 +4,40 @@
 
 
 
-      <form class="form-signin" action="http://bucketadmin.themebucket.net/index.html">
+    <?php
+      echo $this->Form->create
+      (
+        'User',
+        array
+        (
+          'url' => array(
+            'controller' => 'admin',
+            'action' => 'login'
+          ),
+          'class'     => 'form-signin',
+          'inputDefaults' => array
+          (
+            'label' => false,
+            'error' => false
+          )
+        )
+      );?>
+
+
         <h2 class="form-signin-heading">sign in now</h2>
         <div class="login-wrap">
             <div class="user-login-info">
-                <input type="text" class="form-control" placeholder="User ID" autofocus>
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="text" class="form-control" name="data[User][username]" placeholder="Email" autofocus>
+                 <input type="password" class="form-control" name="data[User][password]" placeholder="Password">
             </div>
             <label class="checkbox">
-                <input type="checkbox" value="remember-me"> Remember me
+                <input type="checkbox" name="data[User][remember_me]" value="remember-me"> Remember me Remember me
                 <span class="pull-right">
                     <a data-toggle="modal" href="#myModal"> Forgot Password?</a>
 
                 </span>
             </label>
-            <button class="btn btn-lg btn-login btn-block" type="submit">Sign in</button>
+              <button type="submit" class="btn btn-lg btn-login btn-block">Sign in</button>
 
             <div class="registration">
                 Don't have an account yet?
