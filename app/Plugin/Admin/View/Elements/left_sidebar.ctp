@@ -5,6 +5,19 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
+                 <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-th"></i>
+                        <span>User Manager</span>
+                    </a>
+                    <ul class="sub">
+                        <li>
+<?php
+echo $this->Html->link(__('User Manager', true), array('plugin' => 'admin', 'controller' => 'user', 'action' => 'index'),  array()); ?>
+                             </li>
+                    </ul>
+                </li>
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-laptop"></i>
