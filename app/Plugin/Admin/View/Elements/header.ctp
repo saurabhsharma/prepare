@@ -205,7 +205,12 @@
                     <ul class="dropdown-menu extended logout">
                         <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                         <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                        <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                        <li>
+<?php
+echo $this->Html->link(__('<i class="fa fa-key"></i> Log Out', true), array('plugin' => 'admin', 'controller' => 'admin', 'action' => 'logout'),  array('escape' => false)); ?>
+                            
+
+                        </li>
                     </ul>
                 </li>
                 <!-- user login dropdown end -->

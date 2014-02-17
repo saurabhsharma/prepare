@@ -9,14 +9,21 @@ class AdminController extends AdminAppController {
 		parent::beforeFilter();
     	$this->Auth->allow(array('index','login'));
 
+  		$this->Auth->loginRedirect = '/admin/dashboard';
+    	$this->Auth->logoutRedirect = '/admin/login';
+
+
     }
 
 	public function index() {
 	 
 		if($this->Session->read('Auth.User') && $this->Session->read('Auth.User.role_id') == '1')
         {
-            //$this->redirect(array('admin'=>true,'controller' => 'users', 'action' => 'dashboard'));
-             $this->redirect(array('action' => 'dashboard'));
+        	//$this->redirect(array('admin'=>true,'controller' => 'users', 'action' => 'dashboard'));
+            //$this->redirect(array('action' => 'dashboard'));
+            //$this->redirect('/admin/dashboard/');
+
+            $this->Auth->loginRedirect();
         }
         else
         {
@@ -31,13 +38,11 @@ class AdminController extends AdminAppController {
 	public function login(){
 		
 		$this->layout = "admin_login";
-		 
-		  
 	 
 	 	if ($this->request->is('post'))
 	    {
 		
-			pr($this->request->data);
+			//pr($this->request->data);
 
 	      # Log in using email
 	      if( strstr($this->request->data['User']['username'],'@') )
@@ -54,14 +59,14 @@ class AdminController extends AdminAppController {
 	      // echo "\npassword ". $this->request->data['User']['password'];
 
 	     // debug($this->Auth->login());
-		  debug(AuthComponent::password($this->data[$this->alias]['password']));
+		  //debug(AuthComponent::password($this->data[$this->alias]['password']));
 		 
-
+ 
 
 	      # Try to log in the user
 	      if ($this->Auth->login())
 	      {
-	      	echo "trying to log in!";
+	      	
 	        if( !empty($this->request->data['User']['remember_me']) && $this->request->data['User']['remember_me'] == 'S')
 	        {
 	          $cookie = array();
@@ -73,7 +78,8 @@ class AdminController extends AdminAppController {
 	        }
 
 	        # Redirect to home
-	        $this->redirect($this->Auth->redirect());
+	        //$this->redirect($this->Auth->redirect());
+	        $this->redirect('/admin/dashboard/');
 	      }
 	      else
 	      {
@@ -81,25 +87,21 @@ class AdminController extends AdminAppController {
 	        $this->Session->setFlash(__('Invalid username or password, try again'),'flash_fail');
 	      }
 	    }
-
-
-
-
-
-
-	}
-
-	public function dashboard(){
-
-
-		echo " in dashboard function";
-		exit;
+ 
 
 	}
 
 
+	public function logout()
+  	{
+    	# Destroy the Cookie
+    	$this->Cookie->delete('Auth.User');
 
+   	 	# Destroy the session and redirect to Auth logout url (which is defind in beforeFilter function)
+   		$this->redirect($this->Auth->logout());
+   	 
 
+ 	}
 
 
 }

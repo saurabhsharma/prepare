@@ -31,7 +31,7 @@ class UsersController extends AppController
         # Change the username from data form
         $this->request->data['User']['username'] = $useraux['User']['username'];
       }
-
+pr( $this->request->data);exit; 
       # Try to log in the user
       if ($this->Auth->login())
       {
