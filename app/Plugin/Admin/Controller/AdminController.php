@@ -17,13 +17,12 @@ class AdminController extends AdminAppController {
 
 	public function index() {
 	 
-		if($this->Session->read('Auth.User') && $this->Session->read('Auth.User.role_id') == '1')
+		//if($this->Session->read('Auth.User') && $this->Session->read('Auth.User.role_id') == '1')
+		if($this->Session->read('Auth.User'))
         {
         	//$this->redirect(array('admin'=>true,'controller' => 'users', 'action' => 'dashboard'));
             //$this->redirect(array('action' => 'dashboard'));
-            //$this->redirect('/admin/dashboard/');
-
-            $this->Auth->loginRedirect();
+            $this->redirect('/admin/dashboard/');
         }
         else
         {
