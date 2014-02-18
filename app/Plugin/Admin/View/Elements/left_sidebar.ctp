@@ -1,6 +1,6 @@
 <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="index-2.html">
+                    <a class="active" href="<?php echo $this->webroot; ?>admin/">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>

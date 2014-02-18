@@ -2,7 +2,7 @@
         <!--logo start-->
         <div class="brand">
 
-            <a href="index-2.html" class="logo">
+            <a href="<?php echo $this->webroot; ?>admin/" class="logo">
                 <img src="<?php echo $this->webroot; ?>assets/admin/images/logo.png" alt="">
             </a>
             <div class="sidebar-toggle-box">
